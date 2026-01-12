@@ -53,6 +53,10 @@ public class Calculator {
     }
 
     public void removeResult() {
+        if (results.isEmpty()){
+            System.out.println("삭제할 결과가 없습니다");
+        }
         results.remove(0);
     }
+    
 }

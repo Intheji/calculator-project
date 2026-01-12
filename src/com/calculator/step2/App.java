@@ -1,5 +1,6 @@
 package com.calculator.step2;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
@@ -18,8 +19,7 @@ public class App {
                 try {
                     // Scanner를 사용하여 양의 정수를 입력받는다
                     System.out.print("첫 번째 숫자를 입력하세요: ");
-                    num1 =
-                            sc.nextInt();
+                    num1 = sc.nextInt();
 
                     // 양의 정수가 입력이 안 되었을 경우
                     if (num1 < 0) {
@@ -65,13 +65,20 @@ public class App {
                 continue;
             }
 
-            System.out.println("더 계산하시겠습니까? exit 입력 시 종료 / remove 입력 시 첫 결과 삭제");
-            String exit = sc.next();
-            if (exit.equals("exit")){
+            System.out.println(
+                    "더 계산하시겠습니까? exit 입력 시 종료 / remove 입력 시 첫 결과 삭제 " +
+                            "/ reset 전체 결과 삭제 / results 저장된 결과 조회");
+            String cmd = sc.next();
+            if (cmd.equals("exit")){
                 System.out.println("계산기를 종료합니다");
                 break;
-            } else if (exit.equals("remove")){
+            } else if (cmd.equals("remove")){
                 calculator.removeResult();
+            } else if (cmd.equals("reset")){
+                calculator.setResults(new ArrayList<>());
+                System.out.println("전체 결과 삭제");
+            } else if (cmd.equals("results")){
+                System.out.println("조회: " + calculator.getResults());
             }
         }
 
