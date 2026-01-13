@@ -58,5 +58,4 @@ public class Calculator {
         }
         results.remove(0);
     }
-    
 }

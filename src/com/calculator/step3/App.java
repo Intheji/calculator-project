@@ -6,51 +6,41 @@ public class App {
     public static void main(String[] args) {
 
         // 계산기 인스턴스 생성
-        ArithemeticalCalculator calculator = new ArithemeticalCalculator();
+        ArithmeticalCalculator<Number> calculator = new ArithmeticalCalculator<>();
 
         Scanner sc = new Scanner(System.in);
 
 
         while(true){
 
-            int num1 = 0;
-            int num2 = 0;
+            Number num1;
+            Number num2;
 
-            // 첫 번째 숫자 입력
+            // 첫 번째 숫자를 제대로 입력 받을 때까지 반복문 돌림
             while(true){
+                System.out.print("첫 번째 숫자를 입력하세요: ");
+                String input = sc.next();
+
                 try {
                     // Scanner를 사용하여 양의 정수를 입력받는다
-                    System.out.print("첫 번째 숫자를 입력하세요: ");
-                    num1 = sc.nextInt();
-
-                    // 양의 정수가 입력이 안 되었을 경우
-                    if (num1 < 0) {
-                        System.out.println("0 이상의 정수를 입력하세요.");
-                        continue;
-                    }
+                    num1 = parseNumber(input);
                     break;
                 } catch (Exception e) {
                     // 숫자가 입력되지 않아 프로그램이 오류나는 것을 예외 처리
                     System.out.println("숫자를 입력해 주세요. ㅜㅜ");
-                    // 잘못 입력된 것을 버린다
-                    sc.next();
                 }
             }
 
             // 두 번째 숫자 입력
             while(true){
-                try {
-                    System.out.print("두 번째 숫자를 입력하세요: ");
-                    num2 = sc.nextInt();
+                System.out.print("두 번째 숫자를 입력하세요: ");
+                String input = sc.next();
 
-                    if (num2 < 0) {
-                        System.out.println("0 이상의 정수를 입력하세요.");
-                        continue;
-                    }
+                try {
+                    num2 = parseNumber(input);
                     break;
                 } catch (Exception e) {
                     System.out.println("숫자를 입력해 주세요. ㅜㅜ");
-                    sc.next();
                 }
             }
 
@@ -71,8 +61,8 @@ public class App {
 
             // 계산 calculator
             try {
-                int result = calculator.calculate(num1, num2, operator);
-                System.out.println("결과: " + result);
+                double result = calculator.calculate(num1, num2, operator);
+                System.out.println("결과: " + forResult(result));
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
                 continue;
@@ -104,5 +94,21 @@ public class App {
 
         sc.close();
 
+    }
+
+    // 출력을 int로 하기
+    private static String forResult(double result) {
+        if (result == (int) result) {
+            return String.valueOf((int) result);
+        }
+        return String.valueOf(result);
+    }
+
+    // 문자열을 숫자로 바꿈
+    private static Number parseNumber(String input) {
+        if (input.contains(".")) {
+            return Double.parseDouble(input);
+        }
+        return Integer.parseInt(input);
     }
 }
