@@ -1,5 +1,6 @@
 package com.calculator.step3;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class App {
@@ -73,7 +74,7 @@ public class App {
             System.out.println(
                     "더 계산하시겠습니까? exit 입력 시 종료 / remove 입력 시 첫 결과 삭제 " +
                             "/ reset 전체 결과 삭제 / results 저장된 결과 조회 " +
-                            "/ 아무거나 누르면 계속됩니다");
+                            "/ 아무거나 누르면 계속됩니다 / bigger 입력값보다 큰 결과 조회");
             String cmd = sc.next();
 
             if (cmd.equals("exit")){
@@ -89,11 +90,21 @@ public class App {
             } else if (cmd.equals("results")){
                 // 전체 결과 조회
                 System.out.println("조회: " + calculator.getResults());
+            } else if (cmd.equals("bigger")){
+                // 입력값보다 큰 결과 조회
+                System.out.println("기준값을 입력하세요: ");
+                String input = sc.next();
+                try {
+                    double baseValue = parseNumber(input).doubleValue();
+                    List<Double> biggerResults = calculator.getResultsBiggerThan(baseValue);
+                    System.out.println("입력값(" + baseValue + ")보다 큰 결과들: " + biggerResults);
+                } catch (IllegalArgumentException e) {
+                    System.out.println("기준값은 숫자로 입력해 주세요 ㅜㅜ");
+                }
             }
         }
 
         sc.close();
-
     }
 
     // 출력을 int로 하기

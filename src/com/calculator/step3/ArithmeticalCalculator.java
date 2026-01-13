@@ -63,4 +63,11 @@ public class ArithmeticalCalculator<T extends Number> {
 
     }
 
+    // results 리스트를 스트림으로 만듦
+    public List<Double> getResultsBiggerThan(double baseValue) {
+        return results.stream()
+                .filter(r -> r > baseValue)
+                .toList();
+    }
+
 }
