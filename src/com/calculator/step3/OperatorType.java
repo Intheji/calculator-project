@@ -31,6 +31,6 @@ public enum OperatorType {
         }
         
         // 일치하는 연산자 없을 때
-        throw new IllegalArgumentException("올바른 연산 기호를 입력하세요. (+, -, *, /");
+        throw new IllegalArgumentException("올바른 연산 기호를 입력하세요. (+, -, *, /)");
     }
 }
