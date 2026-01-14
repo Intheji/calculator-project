@@ -1,0 +1,36 @@
+#  📚 Calculator Project
+콘솔 기반 사칙연산 계산기입니다
+
+## ⚙️ 개발 환경
+- Java 17
+- IntelliJ IDEA
+- Console Application
+
+## ▶️ 실행 방법
+1. 각 step 패키지의 `App` 클래스의 `main` 메서드를 실행합니다.
+2. 콘솔 안내에 따라 숫자와 연산자를 입력합니다.
+3. 명령어를 통해 계산기 기능을 사용할 수 있습니다.
+
+
+---
+
+## 🚀 STEP별 구현 내용
+
+### ✅ STEP 1. 기본 계산기 구현
+- Scanner를 사용해 두 개의 정수 입력
+- 사칙연산 기호 입력
+- switch문을 활용한 사칙연산 처리
+- while문을 통한 반복 계산
+- 0으로 나누기 예외 처리
+---
+### ✅ STEP 2. 클래스 분리 & 캡슐화
+- `Calculator` 클래스를 분리하여 계산 로직 담당
+- 계산 결과를 `List` 컬렉션에 저장
+- getter / setter를 통한 캡슐화 적용
+- 가장 먼저 저장된 결과 삭제 기능 구현
+---
+### ✅ STEP 3. enum 기반 계산기 리팩토링
+- `OperatorType` enum을 사용해 연산자 타입 관리
+- 문자(char) 입력을 enum으로 변환하여 처리
+- enum 단계에서 잘못된 연산자 입력 예외 처리
+- `ArithemeticalCalculator`에서 enum 기반 계산 수행
