@@ -28,9 +28,4 @@
 - 계산 결과를 `List` 컬렉션에 저장
 - getter / setter를 통한 캡슐화 적용
 - 가장 먼저 저장된 결과 삭제 기능 구현
----
-### ✅ STEP 3. enum 기반 계산기 리팩토링
-- `OperatorType` enum을 사용해 연산자 타입 관리
-- 문자(char) 입력을 enum으로 변환하여 처리
-- enum 단계에서 잘못된 연산자 입력 예외 처리
-- `ArithemeticalCalculator`에서 enum 기반 계산 수행
+
